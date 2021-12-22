@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Main Activity -->
+    <dimen name="main_activity_add_item_button">60dp</dimen>
+    <dimen name="main_activity_add_button_margin">20dp</dimen>
+
+    <!-- Transaction Item -->
+    <dimen name="transaction_item_height">60dp</dimen>
+    <dimen name="transaction_drawable">40dp</dimen>
+    <dimen name="transaction_item_margin_start">12dp</dimen>
+    <dimen name="transaction_title_size">20sp</dimen>
+    <dimen name="transaction_amount_size">16sp</dimen>
+    <dimen name="transaction_item_margin_top">8dp</dimen>
+
+</resources>

@@ -1,4 +1,4 @@
-package com.mymalls.app.moneytracker.presentation.helpers
+package com.moneytracker.app.android.presentation.helpers
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,7 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
-import com.mymalls.app.moneytracker.BR
+import com.moneytracker.app.android.BR
 
 fun <T : ViewDataBinding> AppCompatActivity.setContentViewBinding(
     @LayoutRes layoutId: Int,

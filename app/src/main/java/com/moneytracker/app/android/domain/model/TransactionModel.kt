@@ -1,9 +1,10 @@
-package com.mymalls.app.moneytracker.domain.model
+package com.moneytracker.app.android.domain.model
 
 import com.google.gson.annotations.SerializedName
 
 data class TransactionModel(
-    val ammount: Float? = null,
+    val transactionId: Int? = null,
+    val amount: Float? = null,
     val concept: String? = null,
     val date: String? = null,
     @SerializedName("number_of_quotes") val numberOfQuotes: Int? = null,

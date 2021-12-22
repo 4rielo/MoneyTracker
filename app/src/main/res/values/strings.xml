@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MoneyTracker</string>
+    <string name="format_ammount">$%1$.2f</string>
 </resources>

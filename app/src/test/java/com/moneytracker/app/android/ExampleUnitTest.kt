@@ -1,4 +1,4 @@
-package com.mymalls.app.moneytracker
+package com.moneytracker.app.android
 
 import org.junit.Test
 
