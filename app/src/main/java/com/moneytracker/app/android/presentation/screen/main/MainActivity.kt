@@ -1,5 +1,6 @@
 package com.moneytracker.app.android.presentation.screen.main
 
+import android.app.Dialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -9,6 +10,7 @@ import com.moneytracker.app.android.databinding.ActivityMainBinding
 import com.moneytracker.app.android.presentation.helpers.setContentViewBinding
 import com.moneytracker.app.android.presentation.mvvm.observeEvent
 import com.moneytracker.app.android.test.SampleDatabase
+import com.mymalls.app.android.presentation.helpers.extensions.getDialog
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,7 +26,11 @@ class MainActivity : AppCompatActivity() {
         transactionListAdapter = TransactionListAdapter {
             Toast.makeText(this.applicationContext, it.concept, Toast.LENGTH_SHORT).show()
         }
-        binding.rvTransactionsList.adapter = transactionListAdapter
+        binding.apply {
+            rvTransactionsList.adapter = transactionListAdapter
+            ivAddItemButton.setOnClickListener { showAddTransactionDialog() }
+        }
+
         setObservers()
     }
 
@@ -48,6 +54,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun observeAddNewItem(){
         mainViewModel.addNewItem.observeEvent(this){
+
+        }
+    }
+
+    private fun showAddTransactionDialog() {
+        getDialog(R.layout.dialog_add_transaction) {
 
         }
     }
