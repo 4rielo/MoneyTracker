@@ -8,7 +8,7 @@ android {
     compileSdk 31
 
     defaultConfig {
-        applicationId "com.mymalls.app.moneytracker"
+        applicationId "com.moneytracker.app"
         minSdk 26
         targetSdk 31
         versionCode 1
@@ -60,9 +60,14 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
 
+    //KOIN
+    def koin_version = '3.1.4'
+    implementation "io.insert-koin:koin-android:$koin_version"
+
     //ROOM database
     def room_version = "2.4.0"
-    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
 
     // Import the BoM for the Firebase platform
     implementation platform('com.google.firebase:firebase-bom:28.4.0')

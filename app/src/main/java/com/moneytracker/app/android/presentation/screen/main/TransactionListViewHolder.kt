@@ -2,10 +2,11 @@ package com.moneytracker.app.android.presentation.screen.main
 
 import androidx.recyclerview.widget.RecyclerView
 import com.moneytracker.app.android.databinding.ListItemTransactionsBinding
+import com.moneytracker.app.android.domain.model.TransactionEntity
 import com.moneytracker.app.android.domain.model.TransactionModel
 
 class TransactionListViewHolder(private val binding: ListItemTransactionsBinding): RecyclerView.ViewHolder(binding.root) {
-    fun bind(transaction: TransactionModel, onTransactionClicked: (transaction: TransactionModel) -> Unit) {
+    fun bind(transaction: TransactionEntity, onTransactionClicked: (transaction: TransactionEntity) -> Unit) {
         binding.apply {
             this.transaction = transaction
             root.setOnClickListener{

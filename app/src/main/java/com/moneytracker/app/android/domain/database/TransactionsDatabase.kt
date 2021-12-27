@@ -6,15 +6,15 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.moneytracker.app.android.domain.model.TransactionEntity
 
-@Database(entities = [TransactionEntity::class], version = 1, exportSchema = false)
+@Database(entities = [TransactionEntity::class], version = 2, exportSchema = false)
 abstract class TransactionsDatabase: RoomDatabase() {
-    abstract val database: TransactionsDatabaseDAO
+    abstract val transactionsDatabaseDAO: TransactionsDatabaseDAO
 
-    companion object {
+    /*companion object {
         @Volatile
         private var INSTANCE: TransactionsDatabase? = null
 
-        fun getInstance(context: Context): TransactionsDatabase {
+        fun getDatabase(context: Context): TransactionsDatabase {
             synchronized(this) {
                 var instance = INSTANCE
 
@@ -31,5 +31,5 @@ abstract class TransactionsDatabase: RoomDatabase() {
                 return instance
             }
         }
-    }
+    }*/
 }

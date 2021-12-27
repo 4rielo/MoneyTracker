@@ -78,6 +78,6 @@
     <data>
         <variable
             name="transaction"
-            type="com.moneytracker.app.android.domain.model.TransactionModel" />
+            type="com.moneytracker.app.android.domain.model.TransactionEntity" />
     </data>
 </layout>

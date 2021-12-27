@@ -1,4 +1,4 @@
-package com.mymalls.app.android.presentation.helpers.extensions
+package com.moneytracker.app.android.presentation.extensions
 
 import android.app.Activity
 import android.app.Dialog

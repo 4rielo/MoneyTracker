@@ -1,21 +1,24 @@
 package com.moneytracker.app.android.presentation.screen.main
 
-import android.app.Dialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.viewModels
+import androidx.appcompat.widget.AppCompatButton
+import androidx.appcompat.widget.AppCompatEditText
+import androidx.appcompat.widget.AppCompatImageButton
 import com.moneytracker.app.android.R
 import com.moneytracker.app.android.databinding.ActivityMainBinding
+import com.moneytracker.app.android.domain.model.TransactionEntity
+import com.moneytracker.app.android.presentation.extensions.getDialog
 import com.moneytracker.app.android.presentation.helpers.setContentViewBinding
 import com.moneytracker.app.android.presentation.mvvm.observeEvent
-import com.moneytracker.app.android.test.SampleDatabase
-import com.mymalls.app.android.presentation.helpers.extensions.getDialog
+import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val mainViewModel: MainViewModel by viewModels()
+    private val mainViewModel: MainViewModel by viewModel()
 
     private lateinit var transactionListAdapter: TransactionListAdapter
 
@@ -59,7 +62,33 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showAddTransactionDialog() {
+
         getDialog(R.layout.dialog_add_transaction) {
+
+            /*val btnOne = findViewById<AppCompatButton>(R.id.btnOne)
+            val btnTwo = findViewById<AppCompatButton>(R.id.btnTwo)
+            val btnThree = findViewById<AppCompatButton>(R.id.btnThree)
+            val btnFour = findViewById<AppCompatButton>(R.id.btnFour)
+            val btnFive = findViewById<AppCompatButton>(R.id.btnFive)
+            val btnSix = findViewById<AppCompatButton>(R.id.btnSix)
+            val btnSeven = findViewById<AppCompatButton>(R.id.btnSeven)
+            val btnEight = findViewById<AppCompatButton>(R.id.btnEight)
+            val btnNine = findViewById<AppCompatButton>(R.id.btnNine)
+            val btnDot = findViewById<AppCompatButton>(R.id.btnDot)
+            val btnZero = findViewById<AppCompatButton>(R.id.btnZero)
+            val btnBack = findViewById<AppCompatButton>(R.id.btnBack)*/
+            val amount = findViewById<AppCompatEditText>(R.id.etAmount)
+            val concept = findViewById<AppCompatEditText>(R.id.etConcept)
+            val btnClose = findViewById<AppCompatImageButton>(R.id.btnClose)
+            val btnSave = findViewById<AppCompatButton>(R.id.btnSave)
+            btnClose.setOnClickListener { dismiss() }
+            btnSave.setOnClickListener {
+                val newTransaction: TransactionEntity = TransactionEntity(amount = amount.text.toString().toFloatOrNull(), concept = concept.text.toString())
+                mainViewModel.storeNewTransaction(newTransaction)
+                dismiss()
+            }
+
+            //btnOne.setOnClickListener {  }
 
         }
     }

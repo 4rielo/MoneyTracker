@@ -3,49 +3,206 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.core.widget.NestedScrollView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline05"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.05"/>
+                app:layout_constraintGuide_percent="0.05" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline95"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.95"/>
+                app:layout_constraintGuide_percent="0.95" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/btnClose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_close"
+                app:layout_constraintEnd_toEndOf="@id/guideline95"
+                app:layout_constraintStart_toEndOf="@id/etAmount"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvEnterAmount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Ingrese el monto deseado: "
+                app:layout_constraintBottom_toTopOf="@id/etConcept"
                 app:layout_constraintEnd_toStartOf="@id/etAmount"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:text="Ingrese el monto deseado: "/>
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintStart_toStartOf="@id/guideline05"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/etAmount"
+                style="@style/CustomStyleTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toEndOf="@id/tvEnterAmount"
+                app:layout_constraintBaseline_toBaselineOf="@id/tvEnterAmount"
+                app:layout_constraintEnd_toStartOf="@id/btnClose"
+                app:layout_constraintStart_toEndOf="@id/tvEnterAmount" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etConcept"
+                style="@style/CustomStyleTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Ingrese una descripción"
+                android:inputType="textAutoComplete"
+                android:textAlignment="textStart"
+                app:layout_constraintEnd_toStartOf="@id/btnClose"
+                app:layout_constraintStart_toStartOf="@id/guideline05"
+                app:layout_constraintTop_toBottomOf="@id/tvEnterAmount" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clKeyboard"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/guideline95"
-                />
+                app:layout_constraintStart_toStartOf="@id/guideline05"
+                app:layout_constraintTop_toBottomOf="@id/etConcept">
 
 
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnOne"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1"
+                    app:layout_constraintEnd_toStartOf="@id/btnTwo"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/btnFour"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnTwo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2"
+                    app:layout_constraintBaseline_toBaselineOf="@id/btnOne"
+                    app:layout_constraintEnd_toStartOf="@id/btnThree"
+                    app:layout_constraintStart_toEndOf="@id/btnOne" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnThree"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3"
+                    app:layout_constraintBaseline_toBaselineOf="@id/btnOne"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/btnTwo" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnFour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4"
+                    app:layout_constraintEnd_toStartOf="@id/btnTwo"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btnOne"
+                    app:layout_constraintBottom_toTopOf="@id/btnSeven"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnFive"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5"
+                    app:layout_constraintBaseline_toBaselineOf="@id/btnFour"
+                    app:layout_constraintEnd_toStartOf="@id/btnSix"
+                    app:layout_constraintStart_toEndOf="@id/btnFour" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnSix"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="6"
+                    app:layout_constraintBaseline_toBaselineOf="@id/btnFour"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/btnFive" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnSeven"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="7"
+                    app:layout_constraintEnd_toStartOf="@id/btnEight"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btnFour" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnEight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="8"
+                    app:layout_constraintBaseline_toBaselineOf="@id/btnSeven"
+                    app:layout_constraintEnd_toStartOf="@id/btnNine"
+                    app:layout_constraintStart_toEndOf="@id/btnSeven" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnNine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="9"
+                    app:layout_constraintBaseline_toBaselineOf="@id/btnSeven"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/btnEight" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnDot"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="."
+                    app:layout_constraintEnd_toStartOf="@id/btnZero"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btnSeven" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnZero"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    app:layout_constraintBaseline_toBaselineOf="@id/btnDot"
+                    app:layout_constraintEnd_toStartOf="@id/btnBack"
+                    app:layout_constraintStart_toEndOf="@id/btnDot" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnBack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="9"
+                    app:layout_constraintBaseline_toBaselineOf="@id/btnDot"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/btnZero" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnSave"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/etConcept"
+                app:layout_constraintEnd_toEndOf="@id/guideline95"
+                android:text="Guardar"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
 
+    <data>
+        <variable
+            name="transaction"
+            type="com.moneytracker.app.android.domain.model.TransactionModel" />
+    </data>
 </layout>

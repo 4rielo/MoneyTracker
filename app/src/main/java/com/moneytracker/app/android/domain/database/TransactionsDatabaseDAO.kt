@@ -9,17 +9,17 @@ import com.moneytracker.app.android.domain.model.TransactionEntity
 @Dao
 interface TransactionsDatabaseDAO {
     @Insert
-    fun insert(transaction: TransactionEntity)
+    suspend fun insert(transaction: TransactionEntity)
 
     @Update
-    fun update(transaction:TransactionEntity)
+    suspend fun update(transaction:TransactionEntity)
 
-    @Query ("select * from transactions where transactionId = :key")
-    fun get(key: Long): TransactionEntity?
+    @Query ("SELECT * FROM transactions WHERE transactionId = :key")
+    suspend fun get(key: Long): TransactionEntity?
 
     @Query ("delete from transactions")
-    fun clear()
+    suspend fun clear()
 
-    @Query ("select * from transactions order by transactionId desc")
-    fun getAllTransactions(): List<TransactionEntity>
+    @Query ("SELECT * FROM transactions ORDER BY transactionId DESC")
+    suspend fun getAllTransactions(): List<TransactionEntity>
 }

@@ -6,10 +6,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.moneytracker.app.android.R
 import com.moneytracker.app.android.databinding.ListItemTransactionsBinding
+import com.moneytracker.app.android.domain.model.TransactionEntity
 import com.moneytracker.app.android.domain.model.TransactionModel
 
-class TransactionListAdapter(private val onItemSelected: (itemSelected: TransactionModel) -> Unit): RecyclerView.Adapter<TransactionListViewHolder>() {
-    private var transactionList: List<TransactionModel> = emptyList<TransactionModel>()
+class TransactionListAdapter(private val onItemSelected: (itemSelected: TransactionEntity) -> Unit): RecyclerView.Adapter<TransactionListViewHolder>() {
+    private var transactionList: List<TransactionEntity> = emptyList<TransactionEntity>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TransactionListViewHolder {
         val binding: ListItemTransactionsBinding = DataBindingUtil.inflate(
@@ -29,7 +30,7 @@ class TransactionListAdapter(private val onItemSelected: (itemSelected: Transact
         return transactionList.size
     }
 
-    fun swapData(newList: List<TransactionModel>) {
+    fun swapData(newList: List<TransactionEntity>) {
         transactionList = newList
         notifyDataSetChanged()
     }

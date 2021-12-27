@@ -1,8 +1,6 @@
-package com.mymalls.app.android.presentation.helpers.extensions
+package com.moneytracker.app.android.presentation.extensions
 
 import android.app.Activity
-import android.content.ClipData
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import androidx.fragment.app.Fragment
