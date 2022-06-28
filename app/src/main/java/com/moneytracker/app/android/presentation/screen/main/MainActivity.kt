@@ -6,7 +6,11 @@ import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.appcompat.widget.AppCompatImageButton
+import com.google.android.play.core.appupdate.AppUpdateManagerFactory
+import com.google.android.play.core.install.model.AppUpdateType
+import com.google.android.play.core.install.model.UpdateAvailability
 import com.moneytracker.app.android.R
+import com.moneytracker.app.android.application.MoneyTrackerApp
 import com.moneytracker.app.android.databinding.ActivityMainBinding
 import com.moneytracker.app.android.domain.model.TransactionEntity
 import com.moneytracker.app.android.presentation.extensions.getDialog
@@ -29,9 +33,32 @@ class MainActivity : AppCompatActivity() {
         transactionListAdapter = TransactionListAdapter {
             Toast.makeText(this.applicationContext, it.concept, Toast.LENGTH_SHORT).show()
         }
+
         binding.apply {
             rvTransactionsList.adapter = transactionListAdapter
             ivAddItemButton.setOnClickListener { showAddTransactionDialog() }
+        }
+
+        val appUpdateManager = AppUpdateManagerFactory.create(baseContext)
+
+// Returns an intent object that you use to check for an update.
+        val appUpdateInfoTask = appUpdateManager.appUpdateInfo
+
+// Checks that the platform will allow the specified type of update.
+        appUpdateInfoTask.addOnSuccessListener { appUpdateInfo ->
+            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE
+                // This example applies an immediate update. To apply a flexible update
+                // instead, pass in AppUpdateType.FLEXIBLE
+                && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE)
+            ) {
+                // Request the update.
+                appUpdateManager.startUpdateFlowForResult(
+                    appUpdateInfo,
+                    AppUpdateType.IMMEDIATE,
+                    this,
+                    MoneyTrackerApp.MY_REQUEST_CODE
+                )
+            }
         }
 
         setObservers()
