@@ -11,6 +11,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.moneytracker.app.android.presentation.util.CalculatorOperation
 import com.moneytracker.app.android.presentation.util.CalculatorState
 import com.moneytracker.app.android.presentation.util.InputButton
@@ -32,6 +33,7 @@ fun InputDialogComposable (
                 ) {
             Text(
                 text = state.number1 + (state.operation?.symbol ?: "") + state.number2,
+                fontSize = 40.sp,
                 textAlign = TextAlign.End
             )
             Row(
@@ -63,7 +65,7 @@ fun InputDialogComposable (
                     symbol = "/",
                     modifier = Modifier
                         .aspectRatio(1f)
-                        .background(Color(R.color.holo_orange_light))
+                        .background(Color.Blue)
                         .weight(1f),
                     onClick = {
                         onAction(InputDialogActions.Operation(CalculatorOperation.Divide))
@@ -109,7 +111,7 @@ fun InputDialogComposable (
                     symbol = "*",
                     modifier = Modifier
                         .aspectRatio(1f)
-                        .background(Color(R.color.holo_orange_light))
+                        .background(Color.Blue)
                         .weight(1f),
                     onClick = {
                         onAction(InputDialogActions.Operation(CalculatorOperation.Multiply))
@@ -155,7 +157,7 @@ fun InputDialogComposable (
                     symbol = "-",
                     modifier = Modifier
                         .aspectRatio(1f)
-                        .background(Color(R.color.holo_orange_light))
+                        .background(Color.Blue)
                         .weight(1f),
                     onClick = {
                         onAction(InputDialogActions.Operation(CalculatorOperation.Subtract))
@@ -201,7 +203,7 @@ fun InputDialogComposable (
                     symbol = "+",
                     modifier = Modifier
                         .aspectRatio(1f)
-                        .background(Color(R.color.holo_orange_light))
+                        .background(Color.Blue)
                         .weight(1f),
                     onClick = {
                         onAction(InputDialogActions.Operation(CalculatorOperation.Add))
@@ -237,7 +239,7 @@ fun InputDialogComposable (
                     symbol = "=",
                     modifier = Modifier
                         .aspectRatio(1f)
-                        .background(Color(R.color.holo_orange_light))
+                        .background(Color.Blue)
                         .weight(1f),
                     onClick = {
                         onAction(InputDialogActions.Calculate)
