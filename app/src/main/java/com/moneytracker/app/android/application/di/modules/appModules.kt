@@ -15,7 +15,7 @@ val appModule = module {
     viewModel { InputDialogViewModel() }
 }
 
-val dabataseModule = module {
+val databaseModule = module {
     fun provideDataBase(application: Application): TransactionsDatabase {
         return Room.databaseBuilder(
                 application,
@@ -26,7 +26,7 @@ val dabataseModule = module {
     }
 
     fun provideDAO(dataBase: TransactionsDatabase): TransactionsDatabaseDAO {
-        return dataBase.transactionsDatabaseDAO
+        return dataBase.transactionsDatabaseDAO()
     }
 
     single { provideDataBase(androidApplication()) }
@@ -34,6 +34,6 @@ val dabataseModule = module {
 }
 
 val appModules = listOf(
-    dabataseModule,
+    databaseModule,
     appModule,
 )

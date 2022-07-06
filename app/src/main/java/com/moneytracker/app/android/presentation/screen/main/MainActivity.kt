@@ -3,15 +3,28 @@ package com.moneytracker.app.android.presentation.screen.main
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.compose.setContent
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.appcompat.widget.AppCompatImageButton
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.moneytracker.app.android.R
 import com.moneytracker.app.android.databinding.ActivityMainBinding
 import com.moneytracker.app.android.domain.model.TransactionEntity
 import com.moneytracker.app.android.presentation.extensions.getDialog
 import com.moneytracker.app.android.presentation.helpers.setContentViewBinding
 import com.moneytracker.app.android.presentation.mvvm.observeEvent
+import com.moneytracker.app.android.presentation.screen.inputdialog.InputDialogComposable
+import com.moneytracker.app.android.presentation.screen.inputdialog.InputDialogFragment
+import com.moneytracker.app.android.presentation.util.InputButton
+import com.moneytracker.app.android.presentation.util.InputDialogActions
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -25,7 +38,20 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = setContentViewBinding(R.layout.activity_main,mainViewModel)
+        setContent {
+            val state = mainViewModel.state
+            val buttonSpacing = 8.dp
+            InputDialogComposable(
+                state = state,
+                buttonSpacing = buttonSpacing,
+                onAction = mainViewModel::onAction,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(Color.Green)
+                    .padding(16.dp)
+            )
+        }
+        /*binding = setContentViewBinding(R.layout.activity_main,mainViewModel)
         transactionListAdapter = TransactionListAdapter {
             Toast.makeText(this.applicationContext, it.concept, Toast.LENGTH_SHORT).show()
         }
@@ -34,7 +60,7 @@ class MainActivity : AppCompatActivity() {
             ivAddItemButton.setOnClickListener { showAddTransactionDialog() }
         }
 
-        setObservers()
+        setObservers()*/
     }
 
     private fun setObservers() {
@@ -61,9 +87,16 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    @Preview(showBackground = true)
+    @Composable
+    fun defaultPreview() {
+        InputButton("4", Modifier, {})
+    }
+
     private fun showAddTransactionDialog() {
 
-        getDialog(R.layout.dialog_add_transaction) {
+        //InputDialogFragment().dialog
+        /*getDialog(R.layout.dialog_add_transaction) {
 
             /*val btnOne = findViewById<AppCompatButton>(R.id.btnOne)
             val btnTwo = findViewById<AppCompatButton>(R.id.btnTwo)
@@ -90,6 +123,6 @@ class MainActivity : AppCompatActivity() {
 
             //btnOne.setOnClickListener {  }
 
-        }
+        }*/
     }
 }

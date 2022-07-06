@@ -1,13 +1,11 @@
 package com.moneytracker.app.android.domain.model
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.*
 
 @Entity(tableName = "transactions")
 data class TransactionEntity(
     @PrimaryKey(autoGenerate = true)
-    val transactionId: Int? = null,
+    var transactionId: Long = 0,
 
     @ColumnInfo(name = "amount")
     var amount: Float? = null,
@@ -18,11 +16,11 @@ data class TransactionEntity(
     @ColumnInfo(name = "date")
     var date: String? = null,
 
-    @ColumnInfo(name = "number_of_quotes")
-    var numberOfQuotes: Int? = null,
+    @ColumnInfo(name = "number_of_payments")
+    var numberOfPayments: Int? = null,
 
-    @ColumnInfo(name = "current_quote")
-    var currentQuote: Int? = null,
+    @ColumnInfo(name = "current_payment")
+    var currentPayment: Int? = null,
 
     @ColumnInfo(name = "category")
     var category: String? = null,
