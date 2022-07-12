@@ -32,42 +32,34 @@ fun InputDialogComposable (
         ) {
             Text(
                 modifier = Modifier
-                    .weight(0.5F),
+                    .weight(1F),
                 text = state.number1 + (state.operation?.symbol ?: "") + state.number2,
                 fontSize = 40.sp,
                 textAlign = TextAlign.Center,
             )
             Row(
                 modifier = Modifier
-                    .weight(0.5F)
                     .fillMaxWidth()
-                    .wrapContentHeight()
-                    .background(Color.LightGray),
-                horizontalArrangement = Arrangement.spacedBy(buttonSpacing)
+                    .weight(1F)
+                    .background(Color.LightGray)
+                    .padding(10.dp),
+                horizontalArrangement = Arrangement.spacedBy(buttonSpacing),
             ) {
-                contentColumnRow.forEachIndexed { index, column ->
+                contentColumnRow.forEach { column ->
                     Column(
                         modifier = Modifier
-                            .wrapContentHeight()
                             .weight(1F),
-                        verticalArrangement = Arrangement.spacedBy(buttonSpacing)
+                        verticalArrangement = Arrangement.spacedBy(buttonSpacing),
                     ) {
-                        column.forEach { rowButton ->
-                            Row(
+                        column.forEach { button ->
+                            InputButton(
+                                symbol = button.symbol,
                                 modifier = Modifier
-                                    .wrapContentWidth()
-                                    .wrapContentHeight()
-                                    .weight(if(index.equals(4)) 0.8F else 1F)
-                            ) {
-                                InputButton(
-                                    symbol = rowButton.symbol,
-                                    modifier = Modifier
-                                        .background(rowButton.backgroundColor)
-                                        .weight(rowButton.weight)
-                                        .aspectRatio(rowButton.aspectRatio),
-                                    onClick = { onAction(rowButton.action) }
-                                )
-                            }
+                                    .background(button.backgroundColor)
+                                    .weight(button.weight)
+                                    .aspectRatio(button.aspectRatio),
+                                onClick = { onAction(button.action) }
+                            )
                         }
                     }
                 }

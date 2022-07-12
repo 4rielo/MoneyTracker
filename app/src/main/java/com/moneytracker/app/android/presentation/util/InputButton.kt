@@ -24,7 +24,6 @@ fun InputButton(
     Box(
         contentAlignment = Alignment.Center,
         modifier = Modifier
-            .clip(CircleShape)
             .size(60.dp)
             .clickable { onClick() }
             .then(modifier)

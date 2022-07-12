@@ -33,15 +33,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setObservers() {
-        observeHello()
         observeDatabase()
         observeAddNewItem()
-    }
-
-    private fun observeHello(){
-        mainViewModel.hello.observe(this){
-            Toast.makeText(this, it, Toast.LENGTH_LONG).show()
-        }
     }
 
     private fun observeDatabase() {
